@@ -4,29 +4,35 @@ import 'react-toastify/dist/ReactToastify.css';
 import Button from "../components/Common/Button";
 import Header from "../components/Common/Header";
 import TabsComponent from "../components/Dashboard/Tabs";
+import PasswordSetup from "../Password/Password";
+import PasswordInput from "../Password/PasswordInput";
 import { get100Coins } from "../functions/get100Coins";
-import { db, auth } from "../firebase/firebase"; // Adjust the path as needed
-import { doc, getDoc, updateDoc, arrayRemove } from "firebase/firestore";
 
 function Watchlist() {
   const [coins, setCoins] = useState([]);
   const [watchlist, setWatchlist] = useState([]);
+  const [passwordSet, setPasswordSet] = useState(false);
+  const [authenticated, setAuthenticated] = useState(false);
+
+  useEffect(() => {
+    const storedPasswordSet = localStorage.getItem("passwordSet") === "true";
+    const storedAuthenticated = localStorage.getItem("authenticated") === "true";
+
+    setPasswordSet(storedPasswordSet);
+    setAuthenticated(storedAuthenticated);
+  }, []);
 
   useEffect(() => {
     const fetchWatchlist = async () => {
-      if (auth.currentUser) {
-        const userDocRef = doc(db, "watchlists", auth.currentUser.uid);
-        const userDocSnap = await getDoc(userDocRef);
-
-        if (userDocSnap.exists()) {
-          const data = userDocSnap.data();
-          setWatchlist(data.items || []);
-        }
+      if (authenticated) {
+        // Fetch watchlist from local storage
+        const storedWatchlist = JSON.parse(localStorage.getItem("watchlist")) || [];
+        setWatchlist(storedWatchlist);
       }
     };
 
     fetchWatchlist();
-  }, []);
+  }, [authenticated]);
 
   useEffect(() => {
     if (watchlist.length > 0) {
@@ -43,47 +49,53 @@ function Watchlist() {
     }
   };
 
-  const handleRemoveFromWatchlist = async (coinId) => {
-    if (auth.currentUser) {
-      const userDocRef = doc(db, "watchlists", auth.currentUser.uid);
+  const handleRemoveFromWatchlist = (coinId) => {
+    const updatedWatchlist = watchlist.filter(id => id !== coinId);
+    setWatchlist(updatedWatchlist);
+    // Update watchlist in local storage
+    localStorage.setItem("watchlist", JSON.stringify(updatedWatchlist));
+    toast.info("Item removed from the watchlist");
+  };
 
-      try {
-        await updateDoc(userDocRef, {
-          items: arrayRemove(coinId)
-        });
-        const updatedWatchlist = watchlist.filter(id => id !== coinId);
-        setWatchlist(updatedWatchlist);
-        toast.info("Item removed from the watchlist");
-      } catch (error) {
-        console.error("Error removing item from watchlist: ", error);
-        toast.error("There was an error removing the item from the watchlist.");
-      }
-    }
+  const handlePasswordSet = () => {
+    setPasswordSet(true);
+    localStorage.setItem("passwordSet", "true");
+  };
+
+  const handlePasswordCorrect = () => {
+    setAuthenticated(true);
+    localStorage.setItem("authenticated", "true");
   };
 
   return (
     <div>
       <Header />
       <ToastContainer />
-      {watchlist.length > 0 ? (
-        <TabsComponent coins={coins} onRemoveFromWatchlist={handleRemoveFromWatchlist} />
+      {!passwordSet ? (
+        <PasswordSetup onPasswordSet={handlePasswordSet} />
+      ) : !authenticated ? (
+        <PasswordInput onPasswordCorrect={handlePasswordCorrect} />
       ) : (
-        <div>
-          <h1 style={{ textAlign: "center" }}>
-            Sorry, No Items In The Watchlist.
-          </h1>
-          <div
-            style={{
-              display: "flex",
-              justifyContent: "center",
-              margin: "2rem",
-            }}
-          >
-            <a href="/dashboard">
-              <Button text="Dashboard" />
-            </a>
+        watchlist.length > 0 ? (
+          <TabsComponent coins={coins} onRemoveFromWatchlist={handleRemoveFromWatchlist} />
+        ) : (
+          <div>
+            <h1 style={{ textAlign: "center" }}>
+              Sorry, No Items In The Watchlist.
+            </h1>
+            <div
+              style={{
+                display: "flex",
+                justifyContent: "center",
+                margin: "2rem",
+              }}
+            >
+              <a href="/dashboard">
+                <Button text="Dashboard" />
+              </a>
+            </div>
           </div>
-        </div>
+        )
       )}
     </div>
   );
