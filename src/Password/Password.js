@@ -6,7 +6,7 @@ const PasswordSetup = ({ onPasswordSet }) => {
   const [password, setPassword] = useState("");
 
   const handlePasswordSubmit = async () => {
-    localStorage.setItem("watchlistPassword");
+    localStorage.setItem("watchlistPassword", password); // Store the password along with its key
     toast.success("Password set successfully");
     onPasswordSet();
   };
