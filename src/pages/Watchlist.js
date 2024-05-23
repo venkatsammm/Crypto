@@ -15,8 +15,8 @@ function Watchlist() {
   const [authenticated, setAuthenticated] = useState(false);
 
   useEffect(() => {
-    const storedPasswordSet = localStorage.getItem("passwordSet") === "true";
-    const storedAuthenticated = localStorage.getItem("authenticated") === "true";
+    const storedPasswordSet = sessionStorage.getItem("passwordSet") === "true";
+    const storedAuthenticated = sessionStorage.getItem("authenticated") === "true";
 
     setPasswordSet(storedPasswordSet);
     setAuthenticated(storedAuthenticated);
@@ -59,12 +59,12 @@ function Watchlist() {
 
   const handlePasswordSet = () => {
     setPasswordSet(true);
-    localStorage.setItem("passwordSet", "true");
+    sessionStorage.setItem("passwordSet", "true");
   };
 
   const handlePasswordCorrect = () => {
     setAuthenticated(true);
-    localStorage.setItem("authenticated", "true");
+    sessionStorage.setItem("authenticated", "true");
   };
 
   return (

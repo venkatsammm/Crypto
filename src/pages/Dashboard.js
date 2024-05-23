@@ -16,7 +16,7 @@ function Dashboard() {
   const [search, setSearch] = useState("");
   const [page, setPage] = useState(1);
   const [paginatedCoins, setPaginatedCoins] = useState([]);
-  const [isBitcoinToastShown, setIsBitcoinToastShown] = useState(false);
+  const [isToastShown, setIsToastShown] = useState(false);
 
   useEffect(() => {
     getData();
@@ -29,20 +29,21 @@ function Dashboard() {
         "https://api.coingecko.com/api/v3/coins/markets?vs_currency=usd&order=market_cap_desc&per_page=100&page=1&sparkline=false"
       )
       .then((response) => {
-        console.log("RESPONSE>>>", response.data);
+        console.log("RESPONSE", response.data);
         setCoins(response.data);
         setPaginatedCoins(response.data.slice(0, 10));
         setLoading(false);
 
-        // Find the highest Bitcoin price and show toast if not shown already
-        const bitcoin = response.data.find(coin => coin.id === 'bitcoin');
-        if (bitcoin && !isBitcoinToastShown) {
-          toast.info(`Current Bitcoin price is $${bitcoin.current_price}`);
-          setIsBitcoinToastShown(true);
+        // Calculate market insights and show toast if not shown already
+        if (!isToastShown) {
+          const topCoin = response.data[0];
+          const marketCap = response.data.reduce((acc, coin) => acc + coin.market_cap, 0);
+          toast.info(`The top coin is ${topCoin.name} with a market cap of $${topCoin.market_cap}. The total market cap is $${marketCap}.`);
+          setIsToastShown(true);
         }
       })
       .catch((error) => {
-        console.log("ERROR>>>", error.message);
+        console.log("ERROR", error.message);
       });
   };
 

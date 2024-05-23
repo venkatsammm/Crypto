@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { toast } from "react-toastify";
 
 const PasswordSetup = ({ onPasswordSet }) => {
   const [password, setPassword] = useState("");
@@ -18,8 +19,6 @@ const PasswordSetup = ({ onPasswordSet }) => {
     <div
       style={{
         display: "flex",
-        justifyContent: "center",
-        alignItems: "center",
         height: "100vh",
       }}
     >
