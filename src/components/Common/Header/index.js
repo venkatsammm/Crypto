@@ -8,6 +8,38 @@ import { blue } from "@mui/material/colors";
 import bull from "../../../images/Bull.png"; // Import the bull image
 
 function Header() {
+  const [darkMode, setDarkMode] = useState(
+    localStorage.getItem("theme") == "dark" ? true : false
+  );
+
+  useEffect(() => {
+    if (localStorage.getItem("theme") == "dark") {
+      setDark();
+    } else {
+      setLight();
+    }
+  }, []);
+
+  const changeMode = () => {
+    if (localStorage.getItem("theme") != "dark") {
+      setDark();
+    } else {
+      setLight();
+    }
+    setDarkMode(!darkMode);
+    toast.success("Theme Changed!");
+  };
+
+  const setDark = () => {
+    localStorage.setItem("theme", "dark");
+    document.documentElement.setAttribute("data-theme", "dark");
+  };
+
+  const setLight = () => {
+    localStorage.setItem("theme", "light");
+    document.documentElement.setAttribute("data-theme", "light");
+  };
+
  
 
   return (
@@ -21,7 +53,7 @@ function Header() {
       </h1>
   
       <div className="links">
-        <Switch />
+        <Switch checked={darkMode} onClick={() => changeMode()} />
         <a href="/">
           <p className="link">Home</p>
         </a>

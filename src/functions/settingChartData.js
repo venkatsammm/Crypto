@@ -1,5 +1,3 @@
-import { gettingDate } from "./getDate";
-
 export const settingChartData = (setChartData, prices1, prices2) => {
   if (prices2) {
     setChartData({
