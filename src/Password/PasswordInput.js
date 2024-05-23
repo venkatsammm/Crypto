@@ -21,14 +21,38 @@ const PasswordInput = ({ onPasswordCorrect }) => {
 
   return (
     <div style={{ textAlign: "center", margin: "2rem" }}>
-      <h2>Enter Password to View Your Watchlist</h2>
-      <input
-        type="password"
-        value={password}
-        onChange={(e) => setPassword(e.target.value)}
-        placeholder="Enter password"
-      />
-      <button onClick={handlePasswordSubmit}>Submit</button>
+      <div>
+        <h2 style={{ marginBottom: "1rem" }}>
+          Enter Password to View Your Watchlist
+        </h2>
+        <input
+          type="password"
+          value={password}
+          onChange={(e) => setPassword(e.target.value)}
+          placeholder="Enter password"
+          style={{
+            padding: "0.5rem",
+            fontSize: "1rem",
+            border: "1px solid #ccc",
+            borderRadius: "4px",
+            marginRight: "1rem",
+          }}
+        />
+        <button
+          onClick={handlePasswordSubmit}
+          style={{
+            padding: "0.5rem 1rem",
+            fontSize: "1rem",
+            backgroundColor: "#007bff",
+            color: "#fff",
+            border: "none",
+            borderRadius: "4px",
+            cursor: "pointer",
+          }}
+        >
+          Submit
+        </button>
+      </div>
     </div>
   );
 };

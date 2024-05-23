@@ -1,3 +1,13 @@
+:root {
+  --pagination-text-color: #fff; /* Default to dark mode */
+}
+
+body.light-mode {
+  --pagination-text-color: #000; /* Light mode text color */
+}
+
+
+
 .pagination-div {
     display: flex;
     align-items: center;

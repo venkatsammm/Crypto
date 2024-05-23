@@ -10,17 +10,16 @@ function Info({ title, desc }) {
   const [toggle, setToggle] = useState(false);
 
   return (
-    // <div className="grey-wrapper info-component">
-    //   <h1>{title}</h1>
-    //   <p
-    //     dangerouslySetInnerHTML={{
-    //       __html: desc.length >= 300 ? (toggle ? longDesc : shortDesc) : desc,
-    //     }}
-    //     className="info-p"
-    //     onClick={() => setToggle(!toggle)}
-    //   />
-    // </div>
-    <div/>
+    <div className="grey-wrapper info-component">
+      <h1>{title}</h1>
+      <p
+        dangerouslySetInnerHTML={{
+          __html: desc.length >= 300 ? (toggle ? longDesc : shortDesc) : desc,
+        }}
+        className="info-p"
+        onClick={() => setToggle(!toggle)}
+      />
+    </div>
   );
 }
 
