@@ -1,3 +1,5 @@
+import { gettingDate } from "./getDate";
+
 export const settingChartData = (setChartData, prices1, prices2) => {
   if (prices2) {
     setChartData({
@@ -9,7 +11,6 @@ export const settingChartData = (setChartData, prices1, prices2) => {
           borderWidth: 1,
           fill: false,
           backgroundColor: "rgba(58, 128, 233,0.1)",
-          
           tension: 0.25,
           borderColor: "#3a80e9",
           pointRadius: 0,
