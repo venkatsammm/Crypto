@@ -38,7 +38,7 @@ function Dashboard() {
         if (!isToastShown) {
           const topCoin = response.data[0];
           const marketCap = response.data.reduce((acc, coin) => acc + coin.market_cap, 0);
-          toast.info(`The top coin is ${topCoin.name} with a market cap of $${topCoin.market_cap}. The total market cap is $${marketCap}.`);
+          toast.info(`The top coin is ${topCoin.name} with a market cap of $${topCoin.market_cap}.`);
           setIsToastShown(true);
         }
       })
