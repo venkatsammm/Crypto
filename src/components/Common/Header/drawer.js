@@ -48,9 +48,6 @@ export default function TemporaryDrawer() {
           <a href="/">
             <p className="link">Home</p>
           </a>
-          <a href="/compare">
-            <p className="link">Compare</p>
-          </a>
           <a href="/watchlist">
             <p className="link">Watchlist</p>
           </a>
