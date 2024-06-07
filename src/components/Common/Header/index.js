@@ -60,6 +60,9 @@ function Header() {
         <a href="/watchlist">
           <p className="link">Watchlist</p>
         </a>
+        <a href="https://666306793fed2400917dad92--keen-gumdrop-91353a.netlify.app/" target="_blank" rel="noopener noreferrer">
+          <p className="link">Portfolio</p>
+        </a>
         <a href="/dashboard">
           <Button text={"dashboard"} />
         </a>
