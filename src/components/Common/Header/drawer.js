@@ -52,7 +52,7 @@ export default function TemporaryDrawer() {
           <a href="/watchlist">
             <p className="link">Watchlist</p>
           </a>
-          <a href="https://666306793fed2400917dad92--keen-gumdrop-91353a.netlify.app/">
+          <a href=" https://66632bcc35256f2637c3479e--keen-gumdrop-91353a.netlify.app/">
             <p className="link">Portfolio</p>
           </a>
           <a href="/dashboard">
