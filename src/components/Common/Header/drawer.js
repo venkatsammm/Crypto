@@ -4,6 +4,7 @@ import MenuRoundedIcon from "@mui/icons-material/MenuRounded";
 import { IconButton } from "@mui/material";
 import Switch from "@mui/material/Switch";
 import { toast } from "react-toastify";
+import { Link } from "react-router-dom";
 
 export default function TemporaryDrawer() {
   const [open, setOpen] = useState(false);
@@ -50,6 +51,9 @@ export default function TemporaryDrawer() {
           </a>
           <a href="/watchlist">
             <p className="link">Watchlist</p>
+          </a>
+          <a href="https://666306793fed2400917dad92--keen-gumdrop-91353a.netlify.app/">
+            <p className="link">Portfolio</p>
           </a>
           <a href="/dashboard">
             <p className="link">Dashboard</p>

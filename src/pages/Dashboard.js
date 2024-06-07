@@ -9,6 +9,7 @@ import TabsComponent from "../components/Dashboard/Tabs";
 import PaginationComponent from "../components/Dashboard/Pagination";
 import TopButton from "../components/Common/TopButton";
 import Loader from "../components/Common/Loader";
+import Footer from "../components/Footer/Footer"; // Import Footer component
 
 function Dashboard() {
   const [coins, setCoins] = useState([]);
@@ -86,6 +87,7 @@ function Dashboard() {
         </>
       )}
       <TopButton />
+      <Footer /> {/* Add Footer component here */}
     </>
   );
 }
