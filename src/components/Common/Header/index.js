@@ -63,6 +63,9 @@ function Header() {
         <a href=" https://66632bcc35256f2637c3479e--keen-gumdrop-91353a.netlify.app/" target="_blank" rel="noopener noreferrer">
           <p className="link">Portfolio</p>
         </a>
+        <a href="https://learncrypto.com/" target="_blank" rel="noopener noreferrer">
+          <p className="link">Learn more</p>
+        </a>
         <a href="/dashboard">
           <Button text={"dashboard"} />
         </a>
