@@ -1,6 +1,4 @@
-Sure, here is an in-depth description of the Crypto Tracker feature for your README file:
 
----
 
 ### Crypto Tracker Feature
 
