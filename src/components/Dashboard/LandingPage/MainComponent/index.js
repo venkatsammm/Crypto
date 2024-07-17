@@ -99,6 +99,15 @@ const MainComponent = () => {
         width: '100%',
     };
 
+    const testimonialFaqContainer = {
+        display: 'flex',
+        flexDirection: 'column',
+        alignItems: 'center',
+        marginBottom: '48px',
+        width: '100%',
+        maxWidth: '1200px',
+    };
+
     return (
         <div style={containerStyle}>
             <div style={contentStyle}>
@@ -212,40 +221,40 @@ const MainComponent = () => {
                 </section>
 
                 {/* Testimonials Section */}
-                <section style={{ marginBottom: '48px', display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
+                <section style={testimonialFaqContainer}>
                     <h2 style={{ fontSize: '1.875rem', fontWeight: '600', marginBottom: '24px', color: '#3B82F6', textAlign: 'center' }}>What users say</h2>
-                    <div style={{ display: 'flex', gap: '32px', maxWidth: '1200px', width: '100%', flexWrap: 'wrap' }}>
-                        <div style={featureItemStyle}>
+                    <div style={responsiveContainer}>
+                        <motion.div style={featureItemStyle} whileHover={{ scale: 1.05 }} transition={{ duration: 0.3 }}>
                             <p style={{ fontSize: '1.125rem', marginBottom: '16px', color: '#4B5563' }}>
                                 "CryptoTracker is my go-to app for staying updated on the latest crypto market trends."
                             </p>
                             <p style={{ fontSize: '1.25rem', fontWeight: 'bold', color: '#3B82F6', marginBottom: '8px' }}>- Alex P.</p>
-                        </div>
-                        <div style={featureItemStyle}>
+                        </motion.div>
+                        <motion.div style={featureItemStyle} whileHover={{ scale: 1.05 }} transition={{ duration: 0.3 }}>
                             <p style={{ fontSize: '1.125rem', marginBottom: '16px', color: '#4B5563' }}>
                                 "A must-have for any crypto enthusiast. I love the customizable watchlists!"
                             </p>
                             <p style={{ fontSize: '1.25rem', fontWeight: 'bold', color: '#3B82F6', marginBottom: '8px' }}>- Maria S.</p>
-                        </div>
+                        </motion.div>
                     </div>
                 </section>
 
                 {/* FAQ Section */}
-                <section style={{ marginBottom: '48px', display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
+                <section style={testimonialFaqContainer}>
                     <h2 style={{ fontSize: '1.875rem', fontWeight: '600', marginBottom: '24px', color: '#3B82F6', textAlign: 'center' }}>Frequently Asked Questions</h2>
-                    <div style={{ display: 'flex', gap: '32px', maxWidth: '1200px', width: '100%', flexWrap: 'wrap' }}>
-                        <div style={featureItemStyle}>
+                    <div style={responsiveContainer}>
+                        <motion.div style={featureItemStyle} whileHover={{ scale: 1.05 }} transition={{ duration: 0.3 }}>
                             <h3 style={{ fontSize: '1.5rem', fontWeight: 'bold', color: '#3B82F6', marginBottom: '16px' }}>How does CryptoTracker work?</h3>
                             <p style={{ fontSize: '1.125rem', marginBottom: '8px', color: '#4B5563' }}>
                                 CryptoTracker uses real-time data to provide you with the latest market trends and news.
                             </p>
-                        </div>
-                        <div style={featureItemStyle}>
+                        </motion.div>
+                        <motion.div style={featureItemStyle} whileHover={{ scale: 1.05 }} transition={{ duration: 0.3 }}>
                             <h3 style={{ fontSize: '1.5rem', fontWeight: 'bold', color: '#3B82F6', marginBottom: '16px' }}>Can I customize my watchlists?</h3>
                             <p style={{ fontSize: '1.125rem', marginBottom: '8px', color: '#4B5563' }}>
                                 Yes, you can create and customize your own watchlists for specific cryptocurrencies.
                             </p>
-                        </div>
+                        </motion.div>
                     </div>
                 </section>
 
